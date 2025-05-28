@@ -12,6 +12,8 @@ namespace FileServices {
         Task<FileDto> UploadFileAsync(FileUploadDto dto);
         Task<FileDownloadDto?> DownloadFileAsync(int id);
         Task DeleteFileAsync(int id);
+        Task<List<FileDto>> GetAllFilesAsync(); // Add this method
+
     }
 
     public class FileService : IFileService
@@ -67,7 +69,16 @@ namespace FileServices {
             await _fileRepository.DeleteFileAsync(id);
         }
         
-       
+        public async Task<List<FileDto>> GetAllFilesAsync()
+        {
+            var files = await _fileRepository.GetAllFilesAsync();
+            return files.ConvertAll(f => new FileDto
+            {
+                Id = f.Id,
+                FileName = f.FileName,
+                FolderId = f.FolderId
+            });
+        }
         
     }
 }

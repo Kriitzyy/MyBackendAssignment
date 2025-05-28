@@ -3,11 +3,14 @@ using MyDbContext;
 
 namespace FileRepo {
 
-    public interface IFileRepository {
+    public interface IFileRepository
+    {
 
         Task<FileModel.File> UploadFileAsync(FileModel.File file);
         Task<FileModel.File?> GetFileByIdAsync(int id);
         Task DeleteFileAsync(int id);
+        Task<List<FileModel.File>> GetAllFilesAsync(); // Add this method
+
     }
 
     public class FileRepository : IFileRepository
@@ -34,12 +37,16 @@ namespace FileRepo {
         public async Task DeleteFileAsync(int id)
         {
             var file = await _context.Files.FindAsync(id);
-            
+
             if (file != null)
             {
                 _context.Files.Remove(file);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task<List<FileModel.File>> GetAllFilesAsync()
+        {
+            return await _context.Files.ToListAsync();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace FileFolderAPI.Controllers{
 
         // Folder Endpoints
 
-        [HttpPost("folders")]
+        [HttpPost("create-folders")]
         public async Task<ActionResult<FolderDTO>> CreateFolder(FolderCreateDTO dto)
         {
 
@@ -40,7 +40,7 @@ namespace FileFolderAPI.Controllers{
             }
         }
 
-        [HttpGet("folders/{id}")]
+        [HttpGet("foldersbyId")]
         public async Task<ActionResult<FolderDTO>> GetFolder(int id)
         {
 
@@ -72,7 +72,7 @@ namespace FileFolderAPI.Controllers{
             }
         }
 
-        [HttpGet("files/{id}")]
+        [HttpGet("filesbyId")]
         public async Task<ActionResult<FileDownloadDto>> DownloadFile(int id)
         {
 
@@ -85,7 +85,7 @@ namespace FileFolderAPI.Controllers{
             return Ok(file);
         }
 
-        [HttpDelete("files/{id}")]
+        [HttpDelete("deletefile")]
         public async Task<IActionResult> DeleteFile(int id)
         {
             try
@@ -101,14 +101,18 @@ namespace FileFolderAPI.Controllers{
         }
 
         // In FileFolderController.cs
-        [HttpGet("folders")]
+        [HttpGet("all-folders")]
         public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
         {
             var folders = await _folderService.GetAllFoldersAsync();
             return Ok(folders);
         }
-        // Skapa en Endpoint för att hämta ALLA folders, till skillnad från endpoint som hämtar via ID
-
-        // Skapa en endpoint som hämtar ALLA filer,  till skillnad från endpoint som hämtar via ID
+ 
+        [HttpGet("all-files")]
+        public async Task<ActionResult<List<FileDto>>> GetAllFiles()
+        {
+            var files = await _fileService.GetAllFilesAsync();
+            return Ok(files);
+        }
     }
 }
