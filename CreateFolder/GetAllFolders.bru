@@ -1,0 +1,14 @@
+meta {
+  name: GetAllFolders
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:5076/api/FileFolder/all-folders
+  auth: inherit 
+}
+
+headers {
+  Accept: application/json
+}
