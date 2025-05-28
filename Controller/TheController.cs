@@ -99,6 +99,14 @@ namespace FileFolderAPI.Controllers{
                 return BadRequest(ex.Message);
             }
         }
+
+        // In FileFolderController.cs
+        [HttpGet("folders")]
+        public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
+        {
+            var folders = await _folderService.GetAllFoldersAsync();
+            return Ok(folders);
+        }
         // Skapa en Endpoint för att hämta ALLA folders, till skillnad från endpoint som hämtar via ID
 
         // Skapa en endpoint som hämtar ALLA filer,  till skillnad från endpoint som hämtar via ID

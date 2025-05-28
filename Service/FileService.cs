@@ -2,18 +2,20 @@ using System.Threading.Tasks;
 using FileDTO;
 using FileModel;
 using FileRepo;
-
+using FolderDTOS;
 
 namespace FileServices {
 
-    public interface IFileService {
+    public interface IFileService
+    {
 
         Task<FileDto> UploadFileAsync(FileUploadDto dto);
         Task<FileDownloadDto?> DownloadFileAsync(int id);
         Task DeleteFileAsync(int id);
     }
 
-    public class FileService : IFileService {
+    public class FileService : IFileService
+    {
 
         private readonly IFileRepository _fileRepository;
 
@@ -22,9 +24,11 @@ namespace FileServices {
             _fileRepository = fileRepository;
         }
 
-        public async Task<FileDto> UploadFileAsync(FileUploadDto dto) {
+        public async Task<FileDto> UploadFileAsync(FileUploadDto dto)
+        {
 
-            var file = new FileModel.File {
+            var file = new FileModel.File
+            {
 
                 FileName = dto.FileName,
                 Content = dto.Content,
@@ -33,7 +37,8 @@ namespace FileServices {
 
             var createdFile = await _fileRepository.UploadFileAsync(file);
 
-            return new FileDto {
+            return new FileDto
+            {
 
                 Id = createdFile.Id,
                 FileName = createdFile.FileName,
@@ -41,12 +46,14 @@ namespace FileServices {
             };
         }
 
-        public async Task<FileDownloadDto?> DownloadFileAsync(int id) {
+        public async Task<FileDownloadDto?> DownloadFileAsync(int id)
+        {
 
             var file = await _fileRepository.GetFileByIdAsync(id);
             if (file == null) return null;
 
-            return new FileDownloadDto {
+            return new FileDownloadDto
+            {
 
                 Id = file.Id,
                 FileName = file.FileName,
@@ -54,9 +61,13 @@ namespace FileServices {
             };
         }
 
-        public async Task DeleteFileAsync(int id) {
-            
+        public async Task DeleteFileAsync(int id)
+        {
+
             await _fileRepository.DeleteFileAsync(id);
         }
+        
+       
+        
     }
 }
