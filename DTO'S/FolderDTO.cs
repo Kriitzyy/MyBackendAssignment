@@ -4,8 +4,8 @@ using FileDTO;
 namespace FolderDTOS {
     
     // 1. Skapa mapp
-    public class FolderCreateDTO
-    {
+    public class FolderCreateDTO {
+        
 
         [Required]
         public string Name { get; set; }  = string.Empty; 

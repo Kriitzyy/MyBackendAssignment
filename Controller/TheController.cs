@@ -1,0 +1,106 @@
+using Microsoft.AspNetCore.Mvc;
+using FolderDTOS;
+using FileDTO;
+using FolderServices;
+using FileServices;
+
+namespace FileFolderAPI.Controllers{
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public class FileFolderController : ControllerBase
+    {
+        private readonly IFolderService _folderService;
+        private readonly IFileService _fileService;
+
+        public FileFolderController(IFolderService folderService, IFileService fileService)
+        {
+
+            _folderService = folderService;
+            _fileService = fileService;
+        }
+
+        // Folder Endpoints
+
+        [HttpPost("folders")]
+        public async Task<ActionResult<FolderDTO>> CreateFolder(FolderCreateDTO dto)
+        {
+
+
+            try
+            {
+
+                var folder = await _folderService.CreateFolderAsync(dto);
+                return CreatedAtAction(nameof(GetFolder), new { id = folder.Id }, folder);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("folders/{id}")]
+        public async Task<ActionResult<FolderDTO>> GetFolder(int id)
+        {
+
+            var folder = await _folderService.GetFolderByIdAsync(id);
+            if (folder == null)
+            {
+
+                return NotFound();
+            }
+            return Ok(folder);
+        }
+
+        // File Endpoints
+
+        [HttpPost("files")]
+        public async Task<ActionResult<FileDto>> UploadFile([FromBody] FileUploadDto dto)
+        {
+
+            try
+            {
+
+                var file = await _fileService.UploadFileAsync(dto);
+                return CreatedAtAction(nameof(DownloadFile), new { id = file.Id }, file);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("files/{id}")]
+        public async Task<ActionResult<FileDownloadDto>> DownloadFile(int id)
+        {
+
+            var file = await _fileService.DownloadFileAsync(id);
+            if (file == null)
+            {
+
+                return NotFound();
+            }
+            return Ok(file);
+        }
+
+        [HttpDelete("files/{id}")]
+        public async Task<IActionResult> DeleteFile(int id)
+        {
+            try
+            {
+                await _fileService.DeleteFileAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+        // Skapa en Endpoint för att hämta ALLA folders, till skillnad från endpoint som hämtar via ID
+
+        // Skapa en endpoint som hämtar ALLA filer,  till skillnad från endpoint som hämtar via ID
+    }
+}

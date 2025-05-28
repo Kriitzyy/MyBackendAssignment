@@ -1,80 +1,80 @@
-# Build output
+### Build outputs ###
 bin/
 obj/
 out/
 
-# User-specific files
+### Development environments ###
+.vscode/
+.vs/
+.idea/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-# VS Code settings folder
-.vscode/
-
-# Visual Studio files and folders
-.vs/
-
-# Rider IDE
-.idea/
-
-# NuGet packages folder
+### Packages ###
 .nuget/
 packages/
+*.nupkg
 
-# Entity Framework Migrations folder
+### Entity Framework ###
 Migrations/
 
-# Logs
+### Logs ###
 *.log
 logs/
 
-# Runtime files
+### Runtime files ###
 *.pid
 *.seed
 *.pid.lock
 
-# Database files (localdb, SQL Server, etc.)
+### Database files ###
 *.mdf
 *.ldf
 *.sqlite
+*.db
 
-# appsettings files with sensitive info (optional)
+### Sensitive config files ###
 appsettings.Development.json
 appsettings.Local.json
 secrets.json
+*.env
 
-# Docker files (if you use Docker)
+### Docker ###
 **/Dockerfile
 **/.dockerignore
 **/docker-compose*.yml
 
-# Test results
+### Testing ###
 TestResults/
 *.trx
 *.coverage
 *.coveragexml
 
-# Temporary files
+### Temporary files ###
 *.tmp
 *.temp
 *.bak
 *.old
-
-# Backup files
 *~
 
-# OS generated files
+### OS generated ###
 .DS_Store
 Thumbs.db
 Desktop.ini
 
-# JetBrains Rider
+### IDE specific ###
+# Rider
 .idea/
 
-# Optional: lock files
-project.lock.json
-project.assets.json
+# VS Code
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# ASP.NET Scaffolding
-ScaffoldingReadMe.txt
+# Text FIles 
+CodeExamples.txt
+Information.txt
+Plan.txt

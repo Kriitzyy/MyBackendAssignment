@@ -4,14 +4,14 @@ using FolderModel;
 namespace FileModel
 {
 
-    public class File
-    {
+    public class File {
+        
         [Key]
         public int Id { get; set; }
         [Required]
         public string FileName { get; set; }
         [Required]
-        public string Content { get; set; } 
+        public string Content { get; set; }
 
         // Foreignkey for the FolderID 
         public int FolderId { get; set; }
@@ -19,5 +19,31 @@ namespace FileModel
         public Folder Folder { get; set; } = null!;
 
     }
-    
-}
+
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
