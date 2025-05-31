@@ -1,0 +1,20 @@
+meta {
+  name: UploadMyFile
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5076/api/filefolder/files
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "fileName": "Dotnet",
+    "folderId": 1,
+    "content": "Dotnet Content"
+  }
+  
+}

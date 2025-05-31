@@ -55,7 +55,7 @@ namespace FileFolderAPI.Controllers{
 
         // File Endpoints
 
-        [HttpPost("files")]
+        [HttpPost("Uploadfiles")]
         public async Task<ActionResult<FileDto>> UploadFile([FromBody] FileUploadDto dto)
         {
 
