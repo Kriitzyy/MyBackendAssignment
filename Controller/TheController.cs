@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using FolderDTOS;
+using MyFolderDTO;
 using FileDTO;
 using FolderServices;
 using FileServices;
 
-namespace FileFolderAPI.Controllers{
+namespace FileFolderAPI.Controllers {
 
     [Route("api/[controller]")]
     [ApiController]
@@ -26,7 +26,6 @@ namespace FileFolderAPI.Controllers{
         public async Task<ActionResult<FolderDTO>> CreateFolder(FolderCreateDTO dto)
         {
 
-
             try
             {
 
@@ -40,7 +39,7 @@ namespace FileFolderAPI.Controllers{
             }
         }
 
-        [HttpGet("foldersbyId")]
+        [HttpGet("GetFoldersById")]
         public async Task<ActionResult<FolderDTO>> GetFolder(int id)
         {
 
@@ -55,7 +54,7 @@ namespace FileFolderAPI.Controllers{
 
         // File Endpoints
 
-        [HttpPost("files")]
+        [HttpPost("UploadAFile")]
         public async Task<ActionResult<FileDto>> UploadFile([FromBody] FileUploadDto dto)
         {
 
@@ -72,7 +71,7 @@ namespace FileFolderAPI.Controllers{
             }
         }
 
-        [HttpGet("filesbyId")]
+        [HttpGet("DownloadAFile")]
         public async Task<ActionResult<FileDownloadDto>> DownloadFile(int id)
         {
 
@@ -85,7 +84,7 @@ namespace FileFolderAPI.Controllers{
             return Ok(file);
         }
 
-        [HttpDelete("deletefile")]
+        [HttpDelete("DeleteAFile")]
         public async Task<IActionResult> DeleteFile(int id)
         {
             try
@@ -101,14 +100,14 @@ namespace FileFolderAPI.Controllers{
         }
 
         // In FileFolderController.cs
-        [HttpGet("all-folders")]
+        [HttpGet("GetAllFolders")]
         public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
         {
             var folders = await _folderService.GetAllFoldersAsync();
             return Ok(folders);
         }
  
-        [HttpGet("all-files")]
+        [HttpGet("GetAllFiles")]
         public async Task<ActionResult<List<FileDto>>> GetAllFiles()
         {
             var files = await _fileService.GetAllFilesAsync();

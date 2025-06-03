@@ -10,11 +10,10 @@ namespace FileDTO {
     
     }
 
-
     // 2. Ladda upp fil
     public class FileUploadDto {
     
-    [Required]
+    [Required]    
     public string FileName { get; set; } 
 
     [Required]
