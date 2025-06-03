@@ -1,0 +1,19 @@
+meta {
+  name: Create-Folder
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5076/api/filefolder/create-folders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "CreateAFolder",
+    "parentId": null
+  }
+  
+}

@@ -1,0 +1,15 @@
+meta {
+  name: DeleteFileById
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:5076/api/filefolder/deletefile?id=2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 2
+}
