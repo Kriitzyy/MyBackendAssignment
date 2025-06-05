@@ -4,8 +4,6 @@ using Data;
 using Repository;
 using Services;
 
-
-
     public class Program
     {
         public static void Main(string[] args)

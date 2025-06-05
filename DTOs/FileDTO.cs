@@ -16,7 +16,7 @@ namespace DTOs {
     [Required]    
     public string FileName { get; set; } 
 
-    [Required]
+    [Required]                                                                      
     [DataType(DataType.Text)]
     public string Content { get; set; } = string.Empty; 
     [Required]
