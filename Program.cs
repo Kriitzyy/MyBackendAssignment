@@ -1,14 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MyDbContext;
-using FolderRepo;
-using FileRepo;
-using FolderRepo;
-using FolderServices;
-using FileServices;
+using Data;
+using Repository;
+using Services;
 
-namespace TheMain
-{
+
 
     public class Program
     {
@@ -38,4 +34,3 @@ namespace TheMain
             app.Run();
         }
     }
-}

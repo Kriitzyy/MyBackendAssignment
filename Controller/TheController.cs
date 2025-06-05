@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using MyFolderDTO;
-using FileDTO;
-using FolderServices;
-using FileServices;
+using DTOs;
+using Services;
 
 namespace FileFolderAPI.Controllers {
 
@@ -28,7 +26,6 @@ namespace FileFolderAPI.Controllers {
 
             try
             {
-
                 var folder = await _folderService.CreateFolderAsync(dto);
                 return CreatedAtAction(nameof(GetFolder), new { id = folder.Id }, folder);
             }

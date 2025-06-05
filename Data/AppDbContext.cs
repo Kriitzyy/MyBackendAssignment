@@ -1,19 +1,21 @@
 using Microsoft.EntityFrameworkCore;
-using FolderModel;
-using FileModel;
-using FolderServices;
+using Models; 
+using Services;
 
-namespace MyDbContext {
-    
-    public class AppDbContext : DbContext {
+namespace Data
+{
+
+    public class AppDbContext : DbContext
+    {
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options) { }
 
         public DbSet<Folder> Folders { get; set; }
-        public DbSet<FileModel.File> Files { get; set; }
-        
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        public DbSet<Models.File> Files { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
 
             modelBuilder.Entity<Folder>()
                 .HasMany(f => f.SubFolders)

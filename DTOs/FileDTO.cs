@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FileDTO {
+namespace DTOs {
 
     public class FileDto {
 

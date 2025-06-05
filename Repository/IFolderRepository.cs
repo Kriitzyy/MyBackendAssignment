@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
-using FolderModel;
-using FileModel;
 using Microsoft.EntityFrameworkCore;
-using MyDbContext;
+using Models; 
+using Data;
 
-namespace FolderRepo {
+namespace Repository {
 
     public interface IFolderRepository
     {

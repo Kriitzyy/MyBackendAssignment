@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using FileDTO;
+using DTOs;
 
-namespace MyFolderDTO {
+namespace DTOs {
     
     // 1. Skapa mapp
     public class FolderCreateDTO {

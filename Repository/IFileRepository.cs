@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
-using MyDbContext;
+using Data;
 
-namespace FileRepo {
+namespace Repository {
 
     public interface IFileRepository
     {
 
-        Task<FileModel.File> UploadFileAsync(FileModel.File file);
-        Task<FileModel.File?> GetFileByIdAsync(int id);
+        Task<Models.File> UploadFileAsync(Models.File file);
+        Task<Models.File?> GetFileByIdAsync(int id);
         Task DeleteFileAsync(int id);
-        Task<List<FileModel.File>> GetAllFilesAsync(); // Add this method
+        Task<List<Models.File>> GetAllFilesAsync(); // Add this method
 
     }
 
@@ -22,14 +22,14 @@ namespace FileRepo {
             _context = context;
         }
 
-        public async Task<FileModel.File> UploadFileAsync(FileModel.File file)
+        public async Task<Models.File> UploadFileAsync(Models.File file)
         {
             _context.Files.Add(file);
             await _context.SaveChangesAsync();
             return file;
         }
 
-        public async Task<FileModel.File?> GetFileByIdAsync(int id)
+        public async Task<Models.File?> GetFileByIdAsync(int id)
         {
             return await _context.Files.FindAsync(id);
         }
@@ -44,7 +44,7 @@ namespace FileRepo {
                 await _context.SaveChangesAsync();
             }
         }
-        public async Task<List<FileModel.File>> GetAllFilesAsync()
+        public async Task<List<Models.File>> GetAllFilesAsync()
         {
             return await _context.Files.ToListAsync();
         }
