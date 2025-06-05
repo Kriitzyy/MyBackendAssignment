@@ -3,11 +3,7 @@ using Microsoft.OpenApi.Models;
 using Data;
 using Repository;
 using Services;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> ce5004557bd933a84b4cee0e1fe78c4261d021d3
 
     public class Program
     {
