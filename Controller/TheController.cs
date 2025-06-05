@@ -20,7 +20,7 @@ namespace FileFolderAPI.Controllers {
 
         // Folder Endpoints
 
-        [HttpPost("/folders")]
+        [HttpPost("folders")]
         public async Task<ActionResult<FolderDTO>> CreateFolder(FolderCreateDTO dto)
         {
 
@@ -36,7 +36,7 @@ namespace FileFolderAPI.Controllers {
             }
         }
 
-        [HttpGet("/folders/{id}")]
+        [HttpGet("folders/{id}")]
         public async Task<ActionResult<FolderDTO>> GetFolder(int id)
         {
 
@@ -51,7 +51,7 @@ namespace FileFolderAPI.Controllers {
 
         // File Endpoints
 
-        [HttpPost("/files")]
+        [HttpPost("files")]
         public async Task<ActionResult<FileDto>> UploadFile([FromBody] FileUploadDto dto)
         {
 
@@ -68,7 +68,7 @@ namespace FileFolderAPI.Controllers {
             }
         }
 
-        [HttpGet("/files/{id}")]
+        [HttpGet("files/{id}")]
         public async Task<ActionResult<FileDownloadDto>> DownloadFile(int id)
         {
 
@@ -81,7 +81,7 @@ namespace FileFolderAPI.Controllers {
             return Ok(file);
         }
 
-        [HttpDelete("/files/{id}")]
+        [HttpDelete("filess/{id}")]
         public async Task<IActionResult> DeleteFile(int id)
         {
             try
@@ -96,14 +96,14 @@ namespace FileFolderAPI.Controllers {
             }
         }
 
-        [HttpGet("/folders")]
+        [HttpGet("folderss")]
         public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
         {
             var folders = await _folderService.GetAllFoldersAsync();
             return Ok(folders);
         }
  
-        [HttpGet("/files")]
+        [HttpGet("files")]
         public async Task<ActionResult<List<FileDto>>> GetAllFiles()
         {
             var files = await _fileService.GetAllFilesAsync();
