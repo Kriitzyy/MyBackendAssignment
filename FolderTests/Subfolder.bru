@@ -1,0 +1,22 @@
+meta {
+  name: Subfolder
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:5076/api/FileFolder/folders
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "name": "MySubFolder",
+    "parentFolderId": 1
+  }
+}
