@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
-using FileDTO;
-using FolderModel;
-using MyFolderDTO;
-using FolderRepo;
+using Models;
+using Repository;
+using DTOs;
 
-namespace FolderServices {
+namespace Services {
 
     public interface IFolderService
     {
@@ -35,7 +34,7 @@ namespace FolderServices {
                 Name = dto.Name,
                 ParentFolderId = dto.ParentFolderId,
                 SubFolders = new List<Folder>(),    // Initialize collections in model
-                Files = new List<FileModel.File>()  // 
+                Files = new List<Models.File>()  // 
 
             };
 

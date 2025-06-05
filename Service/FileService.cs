@@ -1,10 +1,9 @@
 using System.Threading.Tasks;
-using FileDTO;
-using FileModel;
-using FileRepo;
-using MyFolderDTO;
+using Models;
+using DTOs;
+using Repository;
 
-namespace FileServices {
+namespace Services {
 
     public interface IFileService
     {
@@ -29,7 +28,7 @@ namespace FileServices {
         public async Task<FileDto> UploadFileAsync(FileUploadDto dto)
         {
 
-            var file = new FileModel.File
+            var file = new Models.File
             {
 
                 FileName = dto.FileName,

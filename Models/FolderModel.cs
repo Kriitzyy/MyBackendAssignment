@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FolderModel {
-    
-    public class Folder {
+namespace Models
+{
+
+    public class Folder
+    {
 
         [Key]
         public int Id { get; set; }
@@ -14,10 +16,10 @@ namespace FolderModel {
 
         public Folder? ParentFolder { get; set; }
 
-        public List<Folder>? SubFolders { get; set; } =  new List<Folder>();
-        
-        public List<FileModel.File>? Files { get; set; } = new List<FileModel.File>();
-        
+        public List<Folder>? SubFolders { get; set; } = new List<Folder>();
+
+        public List<Models.File>? Files { get; set; } = new List<Models.File>();
+
 
     }
 }

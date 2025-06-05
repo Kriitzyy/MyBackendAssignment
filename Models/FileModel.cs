@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
-using FolderModel;
+using Models;
 
-namespace FileModel
+namespace Models
 {
 
-    public class File {
-        
+    public class File
+    {
+
         [Key]
         public int Id { get; set; }
         [Required]
