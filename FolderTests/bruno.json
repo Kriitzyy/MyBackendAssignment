@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "FolderTests",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
