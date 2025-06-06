@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Models; 
 using Data;
 
-namespace Repository {
+
+namespace Repository
+{
 
     public interface IFolderRepository
     {
