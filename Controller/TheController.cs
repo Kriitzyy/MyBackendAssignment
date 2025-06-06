@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using DTOs;
 using Services;
 
-namespace FileFolderAPI.Controllers {
+
+namespace FileFolderAPI.Controllers
+{
 
     [Route("api/[controller]")]
     [ApiController]
@@ -102,7 +104,7 @@ namespace FileFolderAPI.Controllers {
             var folders = await _folderService.GetAllFoldersAsync();
             return Ok(folders);
         }
- 
+
         [HttpGet("files")]
         public async Task<ActionResult<List<FileDto>>> GetAllFiles()
         {
