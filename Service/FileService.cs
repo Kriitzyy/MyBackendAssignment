@@ -5,13 +5,30 @@ using Repository;
 
 namespace Services {
 
+    /// <summary>
+    /// Service for handling file operations including upload, download and deletion
+    /// </summary>
     public interface IFileService
     {
-
+        /// <summary>
+        /// Uploads a new file to the system
+        /// </summary>
         Task<FileDto> UploadFileAsync(FileUploadDto dto);
+
+        /// <summary>
+        /// Downloads a file by its ID including the content
+        /// </summary>
         Task<FileDownloadDto?> DownloadFileAsync(int id);
+
+        /// <summary>
+        /// Permanently deletes a file
+        /// </summary>
         Task DeleteFileAsync(int id);
-        Task<List<FileDto>> GetAllFilesAsync(); // Add this method
+             
+        /// <summary>
+        /// Retrieves data for all files in the system
+        /// </summary>
+        Task<List<FileDto>> GetAllFilesAsync(); 
 
     }
 
@@ -19,15 +36,19 @@ namespace Services {
     {
 
         private readonly IFileRepository _fileRepository;
-
+        
+        /// <summary>
+        /// Initializes a new instance of the FileService
+        /// </summary>
         public FileService(IFileRepository fileRepository)
         {
             _fileRepository = fileRepository;
         }
 
+        /// <inheritdoc/>
         public async Task<FileDto> UploadFileAsync(FileUploadDto dto)
         {
-
+            // In production, we would add size validation here
             var file = new Models.File
             {
 
@@ -47,6 +68,7 @@ namespace Services {
             };
         }
 
+        /// <inheritdoc/>
         public async Task<FileDownloadDto?> DownloadFileAsync(int id)
         {
 
@@ -62,12 +84,14 @@ namespace Services {
             };
         }
 
+        /// <inheritdoc/>
         public async Task DeleteFileAsync(int id)
         {
-
+            // TODO: Add authorization checks in future implementation
             await _fileRepository.DeleteFileAsync(id);
         }
         
+        /// <inheritdoc/>
         public async Task<List<FileDto>> GetAllFilesAsync()
         {
             var files = await _fileRepository.GetAllFilesAsync();

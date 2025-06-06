@@ -1,42 +1,82 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace DTOs {
-
-    public class FileDto {
-
-    public int Id { get; set; }
-    public string FileName { get; set; } = string.Empty;
-    public int FolderId { get; set; }
     
+    /// <summary>
+    /// Data transfer object representing basic file data
+    /// </summary>
+    public class FileDto
+    {
+        /// <summary>
+        /// File ID
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// File name with extension
+        /// </summary>
+        public string FileName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// ID of containing folder
+        /// </summary>
+        public int FolderId { get; set; }
+
     }
 
-    // 2. Ladda upp fil
+    /// <summary>
+    /// Data transfer object for uploading files
+    /// </summary>
     public class FileUploadDto {
-    
-    [Required]    
-    public string FileName { get; set; } 
+        
+        /// <summary>
+        /// Name of the file including extension (required)
+        /// </summary>
+        [Required]    
+        public string FileName { get; set; } 
 
-    [Required]                                                                      
-    [DataType(DataType.Text)]
-    public string Content { get; set; } = string.Empty; 
-    [Required]
-    public int FolderId { get; set; }
+        /// <summary>
+        /// File content as text (required)
+        /// </summary>
+        [Required]                                                                      
+        [DataType(DataType.Text)]
+        public string Content { get; set; } = string.Empty; 
+
+        /// <summary>
+        /// ID of target folder (required)
+        /// </summary>
+        [Required]
+        public int FolderId { get; set; }
 }
 
-    // 3. Radera fil
+
     public class FileDeleteDto {
 
-    [Required]
-    public int Id { get; set; }
+        [Required]
+        public int Id { get; set; }
 }
 
-    // 4. Ladda ned fil (response DTO)
-    public class FileDownloadDto {
 
-    public int Id { get; set; }
-    public string FileName { get; set; } = string.Empty;
-    public string Content { get; set; } 
-}
+    /// <summary>
+    /// Data transfer object for downloading files including content
+    /// </summary>
+    public class FileDownloadDto
+    {
+        /// <summary>
+        /// File ID
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// File name with extension
+        /// </summary>
+        public string FileName { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// File content
+        /// </summary>
+        public string Content { get; set; }
+    }
 
 
 }

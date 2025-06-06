@@ -5,7 +5,9 @@ using Services;
 
 namespace FileFolderAPI.Controllers
 {
-
+    /// <summary>
+    /// API controller to manage files and folders operations in a hierarchy structure
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class FileFolderController : ControllerBase
@@ -13,6 +15,11 @@ namespace FileFolderAPI.Controllers
         private readonly IFolderService _folderService;
         private readonly IFileService _fileService;
 
+        /// <summary>
+        /// Initialize a new instance of my FileFolderController
+        /// </summary>
+        /// <param name="folderService">Folder service</param>
+        /// <param name="fileService">File service</param>
         public FileFolderController(IFolderService folderService, IFileService fileService)
         {
 
@@ -20,8 +27,13 @@ namespace FileFolderAPI.Controllers
             _fileService = fileService;
         }
 
-        // Folder Endpoints
-
+        /// <summary>
+        /// Creates a new folder in the file system hierarchy
+        /// </summary>
+        /// <param name="dto">Folder creation data</param>
+        /// <returns>The newly created folder</returns>
+        /// <response code="201">Folder created successfully</response>
+        /// <response code="400">Invalid request data</response>
         [HttpPost("folders")]
         public async Task<ActionResult<FolderDTO>> CreateFolder(FolderCreateDTO dto)
         {
@@ -38,6 +50,13 @@ namespace FileFolderAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves a specific folder by its ID including all subfolders and files
+        /// </summary>
+        /// <param name="id">The ID of the folder to retrieve</param>
+        /// <returns>The requested folder structure</returns>
+        /// <response code="200">Folder found and returned</response>
+        /// <response code="404">Folder not found</response>
         [HttpGet("folders/{id}")]
         public async Task<ActionResult<FolderDTO>> GetFolder(int id)
         {
@@ -51,8 +70,13 @@ namespace FileFolderAPI.Controllers
             return Ok(folder);
         }
 
-        // File Endpoints
-
+        /// <summary>
+        /// Uploads a new file to a specified folder by id
+        /// </summary>
+        /// <param name="dto">File upload data including content</param>
+        /// <returns>The created file metadata</returns>
+        /// <response code="201">File uploaded successfully</response>
+        /// <response code="400">Invalid request data</response>
         [HttpPost("files")]
         public async Task<ActionResult<FileDto>> UploadFile([FromBody] FileUploadDto dto)
         {
@@ -70,6 +94,13 @@ namespace FileFolderAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Downloads a file by its ID including the content
+        /// </summary>
+        /// <param name="id">The ID of the file to download</param>
+        /// <returns>The file content and metadata</returns>
+        /// <response code="200">File found and returned</response>
+        /// <response code="404">File not found</response>
         [HttpGet("files/{id}")]
         public async Task<ActionResult<FileDownloadDto>> DownloadFile(int id)
         {
@@ -83,6 +114,13 @@ namespace FileFolderAPI.Controllers
             return Ok(file);
         }
 
+        /// <summary>
+        /// Deletes a file by its ID
+        /// </summary>
+        /// <param name="id">The ID of the file to delete</param>
+        /// <returns>No content if it's successful</returns>
+        /// <response code="204">File deleted successfully</response>
+        /// <response code="400">Invalid request</response>
         [HttpDelete("filess/{id}")]
         public async Task<IActionResult> DeleteFile(int id)
         {
@@ -98,6 +136,10 @@ namespace FileFolderAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves all folders in the system with their hierarchy
+        /// </summary>
+        /// <returns>List of all folders</returns>
         [HttpGet("folders")]
         public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
         {
@@ -105,6 +147,10 @@ namespace FileFolderAPI.Controllers
             return Ok(folders);
         }
 
+        /// <summary>
+        /// Retrieves all files in the system
+        /// </summary>
+        /// <returns>List of all files</returns>
         [HttpGet("files")]
         public async Task<ActionResult<List<FileDto>>> GetAllFiles()
         {
