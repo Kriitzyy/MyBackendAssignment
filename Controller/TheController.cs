@@ -98,7 +98,7 @@ namespace FileFolderAPI.Controllers
             }
         }
 
-        [HttpGet("folderss")]
+        [HttpGet("folders")]
         public async Task<ActionResult<List<FolderDTO>>> GetAllFolders()
         {
             var folders = await _folderService.GetAllFoldersAsync();
